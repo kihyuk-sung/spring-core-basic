@@ -14,10 +14,10 @@ class RateDiscountPolicyTest: FunSpec({
         val member = Member(MemberId(1), "memberVIP", Grade.VIP)
 
         //when
-        val discount = discountPolicy.discount(member, 10_000)
+        val discount = discountPolicy.discount(member, 20_000)
 
         //then
-        discount shouldBe 1_000
+        discount shouldBe 2_000
     }
 
     test("VIP가 아니면 할인이 적용되지 않는다") {

@@ -21,7 +21,7 @@ fun main() {
 
     memberService.join(member)
 
-    val order = orderService.createOrder(memberId = memberId, itemName = "itemA", itemPrice = 10_000)
+    val order = orderService.createOrder(memberId = memberId, itemName = "itemA", itemPrice = 20_000)
 
     println("order = $order")
     println("order.calculatePrice = ${order?.calculatePrice()}")
