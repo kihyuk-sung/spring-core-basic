@@ -3,7 +3,9 @@ package hello.core.order
 import hello.core.discount.DiscountPolicy
 import hello.core.member.MemberId
 import hello.core.member.MemberRepository
+import org.springframework.stereotype.Component
 
+@Component
 class OrderServiceImpl(
     val memberRepository: MemberRepository,
     private val discountPolicy: DiscountPolicy,

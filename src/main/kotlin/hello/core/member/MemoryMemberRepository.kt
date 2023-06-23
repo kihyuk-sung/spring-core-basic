@@ -1,5 +1,8 @@
 package hello.core.member
 
+import org.springframework.stereotype.Component
+
+@Component
 class MemoryMemberRepository: MemberRepository {
     companion object {
         private val store = mutableMapOf<MemberId, Member>()
