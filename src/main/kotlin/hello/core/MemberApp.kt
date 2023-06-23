@@ -1,12 +1,13 @@
 package hello.core
 
 import hello.core.member.*
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 class MemberApp
 
 fun main() {
-    val appConfig = AppConfig()
-    val memberService = appConfig.memberService()
+    val applicationContext = AnnotationConfigApplicationContext(AppConfig::class.java)
+    val memberService = applicationContext.getBean("memberService", MemberService::class.java)
 
     val memberId = MemberId(1L)
 

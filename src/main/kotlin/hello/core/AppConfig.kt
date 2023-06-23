@@ -8,18 +8,25 @@ import hello.core.member.MemberServiceImpl
 import hello.core.member.MemoryMemberRepository
 import hello.core.order.OrderService
 import hello.core.order.OrderServiceImpl
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
+@Configuration
 class AppConfig {
 
+    @Bean
     fun memberService(): MemberService = MemberServiceImpl(memoryMemberRepository())
 
+    @Bean
     fun orderService(): OrderService = OrderServiceImpl(
         memberRepository = memoryMemberRepository(),
         discountPolicy = discountPolicy(),
     )
 
-    private fun memoryMemberRepository() = MemoryMemberRepository()
+    @Bean
+    fun memoryMemberRepository() = MemoryMemberRepository()
 
-    private fun discountPolicy(): DiscountPolicy = RateDiscountPolicy()
+    @Bean
+    fun discountPolicy(): DiscountPolicy = RateDiscountPolicy()
 
 }
