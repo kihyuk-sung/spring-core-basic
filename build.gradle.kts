@@ -7,6 +7,8 @@ plugins {
 	kotlin("plugin.spring") version "1.8.22"
 }
 
+val kotestVersion by extra("5.6.2")
+
 group = "hello"
 version = "0.0.1-SNAPSHOT"
 
@@ -22,6 +24,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation ("io.kotest:kotest-runner-junit5:$kotestVersion")
 }
 
 tasks.withType<KotlinCompile> {
