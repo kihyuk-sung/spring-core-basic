@@ -5,7 +5,7 @@ import hello.core.member.MemberId
 import hello.core.member.MemberRepository
 
 class OrderServiceImpl(
-    private val memberRepository: MemberRepository,
+    val memberRepository: MemberRepository,
     private val discountPolicy: DiscountPolicy,
 ): OrderService {
 

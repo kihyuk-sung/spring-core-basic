@@ -16,15 +16,17 @@ class AppConfig {
 
     @Bean
     fun memberService(): MemberService = MemberServiceImpl(memoryMemberRepository())
+        .also { println("call memberService") }
 
     @Bean
     fun orderService(): OrderService = OrderServiceImpl(
         memberRepository = memoryMemberRepository(),
         discountPolicy = discountPolicy(),
-    )
+    ).also { println("call orderService") }
 
     @Bean
     fun memoryMemberRepository() = MemoryMemberRepository()
+        .also { println("call memberRepository") }
 
     @Bean
     fun discountPolicy(): DiscountPolicy = RateDiscountPolicy()
