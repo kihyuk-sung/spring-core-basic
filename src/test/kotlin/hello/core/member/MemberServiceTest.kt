@@ -1,10 +1,12 @@
 package hello.core.member
 
+import hello.core.AppConfig
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
 class MemberServiceTest: BehaviorSpec({
-    val memberService = MemberServiceImpl()
+    val memberService = AppConfig().memberService()
+
     given("member") {
         val memberId = MemberId(1L)
         val member = Member(id = memberId, name = "memberId", grade = Grade.VIP)

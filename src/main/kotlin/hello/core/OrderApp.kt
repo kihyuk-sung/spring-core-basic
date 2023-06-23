@@ -3,14 +3,13 @@ package hello.core
 import hello.core.member.Grade
 import hello.core.member.Member
 import hello.core.member.MemberId
-import hello.core.member.MemberServiceImpl
-import hello.core.order.OrderServiceImpl
 
 class OrderApp
 
 fun main() {
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    val appConfig = AppConfig()
+    val memberService = appConfig.memberService()
+    val orderService = appConfig.orderService()
 
     val memberId = MemberId(1L)
 

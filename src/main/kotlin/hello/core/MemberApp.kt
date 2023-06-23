@@ -5,7 +5,8 @@ import hello.core.member.*
 class MemberApp
 
 fun main() {
-    val memberService = MemberServiceImpl()
+    val appConfig = AppConfig()
+    val memberService = appConfig.memberService()
 
     val memberId = MemberId(1L)
 

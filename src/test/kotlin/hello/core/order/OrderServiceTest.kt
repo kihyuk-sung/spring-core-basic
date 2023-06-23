@@ -1,15 +1,16 @@
 package hello.core.order
 
+import hello.core.AppConfig
 import hello.core.member.Grade
 import hello.core.member.Member
 import hello.core.member.MemberId
-import hello.core.member.MemberServiceImpl
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
 class OrderServiceTest: FunSpec({
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    val appConfig = AppConfig()
+    val memberService = appConfig.memberService()
+    val orderService = appConfig.orderService()
 
     test("create Order") {
         val memberId = MemberId(1L)
