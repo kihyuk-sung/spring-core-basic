@@ -18,7 +18,7 @@ class BeanLifeCycleTest: FunSpec({
     @Configuration
     class LifeCycleConfig {
 
-        @Bean
+        @Bean(initMethod = "init")
         fun networkClient() = NetworkClient()
             .apply { this.setUrl("http://hello-spring.dev") }
 

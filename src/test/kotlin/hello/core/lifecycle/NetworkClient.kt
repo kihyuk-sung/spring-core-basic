@@ -5,7 +5,7 @@ import org.springframework.beans.factory.InitializingBean
 
 class NetworkClient (
     private var url: String? = null,
-): InitializingBean, DisposableBean {
+) {
 
     init {
         println("생성자 호출, url = $url")
@@ -21,10 +21,13 @@ class NetworkClient (
 
     fun disconnect() = println("close: $url")
 
-    override fun afterPropertiesSet(): Unit = this
+    fun init() = this
+        .apply { println("NetworkClient.init") }
         .apply { connect() }
         .call("초기화 연결 메시지")
 
-    override fun destroy() = this.disconnect()
+    fun close() = this
+        .apply { println("NetworkClient.close") }
+        .disconnect()
 
 }
