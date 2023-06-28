@@ -4,6 +4,8 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import jakarta.annotation.PostConstruct
 import jakarta.annotation.PreDestroy
+import jakarta.inject.Provider
+import org.springframework.beans.factory.ObjectProvider
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Scope
 
@@ -29,16 +31,17 @@ class SingletonWithPrototypeTest: FunSpec({
         clientBean1.logic() shouldBe 1
 
         val clientBean2 = ac.getBean(ClientBean::class.java)
-        clientBean2.logic() shouldBe 2
+        clientBean2.logic() shouldBe 1
     }
 
 }) {
 
     @Scope("singleton")
     class ClientBean (
-        private val prototypeBean: PrototypeBean,
+        private val prototypeBeanProvider: Provider<PrototypeBean>,
     ) {
         fun logic(): Int {
+            val prototypeBean = prototypeBeanProvider.get()
             prototypeBean.addCount()
             return prototypeBean.getCount()
         }

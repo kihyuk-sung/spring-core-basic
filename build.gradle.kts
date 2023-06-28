@@ -23,6 +23,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("jakarta.inject:jakarta.inject-api:2.0.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation ("io.kotest:kotest-runner-junit5:$kotestVersion")
 }
