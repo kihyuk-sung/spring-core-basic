@@ -1,7 +1,7 @@
 package hello.core.lifecycle
 
-import org.springframework.beans.factory.DisposableBean
-import org.springframework.beans.factory.InitializingBean
+import jakarta.annotation.PostConstruct
+import jakarta.annotation.PreDestroy
 
 class NetworkClient (
     private var url: String? = null,
@@ -21,11 +21,13 @@ class NetworkClient (
 
     fun disconnect() = println("close: $url")
 
+    @PostConstruct
     fun init() = this
         .apply { println("NetworkClient.init") }
         .apply { connect() }
         .call("초기화 연결 메시지")
 
+    @PreDestroy
     fun close() = this
         .apply { println("NetworkClient.close") }
         .disconnect()
